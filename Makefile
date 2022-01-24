@@ -33,7 +33,7 @@ CPY		=		cp
 _SRC	=		src/
 _OBJ	=		obj/
 _LIB	=		libs/
-_BIN	=		bin/
+_BIN	=		./
 
 ############### COMPILER ################
 
@@ -59,7 +59,7 @@ all: deps $(NAME)
 $(_OBJ)%.o: $(_SRC)%.c
 	$(CC) $(CF) -c $< -o $@
 
-$(NAME): deps $(OBJS)
+$(_BIN)$(NAME): deps $(OBJS)
 	$(CC) $(CF) $(LIBS) $(OBJS) -o $@ -L $(_LIB)
 
 bonus: deps_b $(OBJS_B)

@@ -27,6 +27,7 @@ typedef struct s_data
 	int		here_doc;
 }			t_data;
 
+char	**px_split(const char *s);
 void	px_put_matrix(const char *frmt, const char **matrix);
 void	px_free_matrix(char **matrix);
 char	**px_mpaths(char **envp);

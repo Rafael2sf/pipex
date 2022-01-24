@@ -26,7 +26,7 @@ char	**px_newcmd(const char *cmd, char **paths)
 		ft_putstr(STDERR_FILENO, "command not found\n");
 		return (NULL);
 	}
-	cmdv = ft_split(cmd, " ");
+	cmdv = px_split(cmd);
 	if (!cmdv)
 		return (NULL);
 	fp = px_srchfp(cmdv[0], paths);

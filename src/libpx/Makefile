@@ -48,6 +48,7 @@ SRCS_	=		exec.c \
 				matrix.c \
 				ncmd.c \
 				pipex.c \
+				split.c \
 				struct.c \
 				utils.c
 
@@ -59,6 +60,7 @@ SRCS__B	=		exec.c \
 				ncmd.c \
 				utils.c \
 				pipex_bonus.c \
+				split.c \
 				struct_bonus.c \
 				hdoc_bonus.c
 
