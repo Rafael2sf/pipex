@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <sys/wait.h>
-#include "../libft/libft.h"
+#ifndef LIBPX_BONUS_H
+# define LIBPX_BONUS_H
 
-typedef struct	s_data
+# include <stdio.h>
+# include <fcntl.h>
+# include "../libft/libft.h"
+
+typedef struct s_data
 {
 	int		ifd;
 	char	*outfile;
@@ -35,3 +37,5 @@ int		px_exec(int ifd, char **cmd, char **envp, int ofd);
 char	**px_newcmd(const char *cmd, char **paths);
 t_data	*px_init_pdata(void);
 int		px_heredoc(const char *delimitir, int npipe);
+
+#endif

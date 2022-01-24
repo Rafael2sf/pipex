@@ -15,7 +15,7 @@
 static char	**px_hndl_cmds(int argc, char **argv);
 static int	px_hndl_ifd(int argc, char **argv);
 
-int		main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	int		ret;
 	int		ifd;
@@ -24,8 +24,8 @@ int		main(int argc, char **argv, char **envp)
 	ret = 1;
 	if (argc < 5)
 	{
-		write(STDERR_FILENO, "Usage:\t./prog file1 cmd1...cmdn file2\n", 39);
-		write(STDERR_FILENO, "\t./prog here_doc DELIMITER cmd1...cmdn file2\n", 46);
+		write(2, "Usage:\t./prog file1 cmd1...cmdn file2\n", 39);
+		write(2, "\t./prog here_doc DELIMITER cmd1...cmdn file2\n", 46);
 		return (1);
 	}
 	ifd = px_hndl_ifd(argc, argv);
@@ -38,6 +38,8 @@ int		main(int argc, char **argv, char **envp)
 	else
 		perror("");
 	close(ifd);
+	/*system(ft_strjoin("lsof -a -p ", ft_itoa(getpid())));
+	system(ft_strjoin("leaks ", ft_itoa(getpid())));*/
 	return (ft_abs(ret));
 }
 
@@ -68,7 +70,7 @@ static int	px_hndl_ifd(int argc, char **argv)
 	{
 		ifd = open(argv[1], O_RDONLY);
 		if (ifd == -1)
-			perror("");
+			perror(argv[1]);
 	}
 	else
 	{
@@ -76,5 +78,5 @@ static int	px_hndl_ifd(int argc, char **argv)
 		if (ifd == -1)
 			perror("");
 	}
-	return (ifd);	
+	return (ifd);
 }

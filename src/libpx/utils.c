@@ -57,7 +57,6 @@ char	*px_getevar(const char *var, const char **envp)
 	return (NULL);
 }
 
-
 /* Allows closing of multiple fds */
 int	px_close(int count, ...)
 {

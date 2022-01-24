@@ -14,7 +14,7 @@
 
 static char	**px_hndl_cmds(char **argv);
 
-int		main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	int		ret;
 	int		ifd;
@@ -38,6 +38,8 @@ int		main(int argc, char **argv, char **envp)
 	else
 		perror("");
 	close(ifd);
+	/*system(ft_strjoin("lsof -a -p ", ft_itoa(getpid())));
+	system(ft_strjoin("leaks ", ft_itoa(getpid())));*/
 	return (ft_abs(ret));
 }
 

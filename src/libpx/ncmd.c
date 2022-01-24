@@ -42,6 +42,7 @@ char	**px_newcmd(const char *cmd, char **paths)
 	cmdv[0] = fp;
 	return (cmdv);
 }
+
 /* Searches for a file in a matrix of paths */
 static char	*px_srchfp(char	*fname, char **paths)
 {

@@ -40,8 +40,8 @@ int	pipex(int ifd, char **cmdv, char **envp, char *outfile)
 		(pdata->here_doc) = 1;
 		i = 2;
 	}
-	px_put_matrix("- %s\n", (const char **)cmdv);
 	ret = px_execve(pdata, i);
+	px_free_matrix(pdata->paths);
 	free(pdata);
 	return (ret);
 }
@@ -109,7 +109,7 @@ static int	px_ewait(t_data *pdata, int pid, int i)
 			perror(pdata->outfile);
 		else
 			close(ofd);
-		return (-1);
+		return (127);
 	}
 	return (wstat);
 }

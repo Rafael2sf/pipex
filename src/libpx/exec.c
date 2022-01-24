@@ -21,7 +21,7 @@ int	px_exec(int ifd, char **cmd, char **envp, int ofd)
 	int	p[2];
 	int	pid;
 
-	if  (pipe(p) == -1)
+	if (pipe(p) == -1)
 		return (-1);
 	pid = fork();
 	if (pid == -1)

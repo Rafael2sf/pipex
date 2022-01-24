@@ -20,7 +20,6 @@ static int	px_eexit(int val, t_data *pdata);
 int	pipex(int ifd, char **argv, char **envp, char *outfile)
 {
 	t_data	*pdata;
-	char	**paths;
 	int		ret;
 
 	pdata = px_init_pdata();
@@ -29,13 +28,13 @@ int	pipex(int ifd, char **argv, char **envp, char *outfile)
 		perror("");
 		return (-1);
 	}
-	paths = px_mpaths(envp);
 	(pdata->ifd) = ifd;
 	(pdata->outfile) = outfile;
 	(pdata->envp) = envp;
 	(pdata->cmds) = argv;
-	(pdata->paths) = paths;
+	(pdata->paths) = px_mpaths(envp);
 	ret = px_execve(pdata);
+	px_free_matrix(pdata->paths);
 	free(pdata);
 	return (ret);
 }
@@ -58,8 +57,8 @@ static int	px_execve(t_data *pdata)
 			else
 				fd = px_exec_out(fd, cmd, pdata);
 			px_free_matrix(cmd);
-			if (fd == -1)
-				px_eexit(1, pdata);
+			if (fd < 0)
+				px_eexit(fd, pdata);
 		}
 		else
 			px_close(1, &fd);
@@ -75,7 +74,10 @@ static int	px_exec_out(int fd, char **cmd, t_data *pdata)
 
 	ofd = open(pdata->outfile, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (ofd == -1)
-		return (-1);
+	{
+		perror(pdata->outfile);
+		return (-2);
+	}
 	ret = px_exec(fd, cmd, pdata->envp, ofd);
 	close(ofd);
 	return (ret);
@@ -101,18 +103,18 @@ static int	px_ewait(t_data *pdata, int pid, int i)
 			perror(pdata->outfile);
 		else
 			close(ofd);
-		return (-1);
+		return (127);
 	}
-	//printf("wstat: %d\n", wstat);
 	return (wstat);
 }
 
 static int	px_eexit(int val, t_data *pdata)
 {
-	perror("");
+	if (val == -1)
+		perror("");
 	close(pdata->ifd);
 	free(pdata->cmds);
 	px_free_matrix(pdata->paths);
 	free(pdata);
-	exit(val);
+	exit(1);
 }
