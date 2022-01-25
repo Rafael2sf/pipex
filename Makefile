@@ -104,4 +104,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus deps deps_b clean fclean re
