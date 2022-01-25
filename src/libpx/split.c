@@ -6,7 +6,7 @@
 /*   By: rafernan <rafernan@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 10:05:44 by rafernan          #+#    #+#             */
-/*   Updated: 2022/01/24 12:03:44 by rafernan         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:20:53 by rafernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ char	**px_split(const char *s)
 {
 	char	**ret;
 	int		size;
-	int		i;
 
-	i = 0;
 	if (!s || !*s)
 		return (NULL);
 	size = px_split_len((char *)s);

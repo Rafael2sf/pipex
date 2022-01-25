@@ -19,7 +19,7 @@ t_data	*px_init_pdata(void)
 	new = (t_data *)malloc(sizeof(t_data));
 	if (new)
 	{
-		(new->ifd) = 0;
+		(new->ifd) = -1;
 		(new->outfile) = NULL;
 		(new->cmds) = NULL;
 		(new->envp) = NULL;

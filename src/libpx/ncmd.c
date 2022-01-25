@@ -15,7 +15,6 @@
 static char	*px_srchfp(char	*fname, char **paths);
 static char	*px_strpath(const char *path, const char *file);
 
-// Generates a new cmd for execve from a string and a search path list
 char	**px_newcmd(const char *cmd, char **paths)
 {
 	char	**cmdv;
@@ -43,7 +42,6 @@ char	**px_newcmd(const char *cmd, char **paths)
 	return (cmdv);
 }
 
-/* Searches for a file in a matrix of paths */
 static char	*px_srchfp(char	*fname, char **paths)
 {
 	char	*fp;
@@ -66,7 +64,6 @@ static char	*px_srchfp(char	*fname, char **paths)
 	return (NULL);
 }
 
-/* Joins a filename with a path */
 static char	*px_strpath(const char *path, const char *file)
 {
 	char	*new;
