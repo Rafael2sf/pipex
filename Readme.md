@@ -1,9 +1,13 @@
 # PIPEX
+✅ Finished.
 
 # 42 lisbon
 
 ## 📝 Description
 This project is the discovery in detail and by programming of a UNIX mechanism that you already know. You will build more understanding of file descriptors, redirection, processes and pipes, all built in C. The progam should be capable of simulating a shell command.
+
+# 💻 Compatibility
+macOS
 
 ## ℹ️ Usage
 
